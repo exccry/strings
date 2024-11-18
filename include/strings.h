@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -13,7 +15,7 @@
 
 #define ARRS(arr) (sizeof((arr)) / sizeof((arr[0])))
 
-typedef struct
+typedef struct strlib_string
 {
   char *value;
   size_t length;
@@ -45,32 +47,3 @@ void string_destroy(String *str);
 void string_destroy_h(String **str);
 
 bool vstr(String *str);
-
-/*
-bool string_append(String *dest, String *src);
-
-bool string_append_cstr(String *dest, const char *src);
-
-bool string_copy(String *dest, String *src);
-
-bool string_copy_cstr(String *dest, const char *src);
-
-int string_compare(String *str1, String *str2);
-
-int string_compare_cstr(String *str1, const char *str2);
-
-//bool string_slice(String *string, const char *substr, String *new_string);
-
-bool string_format(String *str, const char *fmt, ...);
-*/
-
-/*
-
-static functions inside definition source file
-
-static bool string_realloc(String *str);
-
-// shrinks string to length if length > size
-static bool string_shrink_to_len(String *str);
-
-*/

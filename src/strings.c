@@ -239,5 +239,3 @@ bool vstr(String *str)
 {
   return str->value == NULL ? false : true;
 }
-
-
