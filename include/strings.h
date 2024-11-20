@@ -24,16 +24,6 @@ typedef struct strlib_string
 
 void init_string_lib(void);
 
-void cleanup_strings(void);
-
-void register_string(String *str);
-
-void unregister_string(String *str);
-
-void string_check_for_signal(void);
-
-void signal_handler(int signum);
-
 // for stack instantiation
 String string(const char *str);
 
@@ -43,7 +33,8 @@ String *string_h(const char *str);
 // safe free stack
 void string_destroy(String *str);
 
-// safe free heap
+// secure use after free
 void string_destroy_h(String **str);
 
 bool vstr(String *str);
+

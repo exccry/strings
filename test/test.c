@@ -1,3 +1,4 @@
+#include "regman.h"
 #include "strings.h"
 #include "log.h"
 
