@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include <math.h>
 #include <stdbool.h>
 #include <signal.h>
 #include <stdatomic.h>
@@ -22,7 +21,7 @@ typedef struct strlib_string
   size_t size;
 } String;
 
-void init_string_lib(void);
+void strings_init(void);
 
 // for stack instantiation
 String string(const char *str);
@@ -33,7 +32,7 @@ String *string_h(const char *str);
 // safe free stack
 void string_destroy(String *str);
 
-// secure use after free
+// safe free heap
 void string_destroy_h(String **str);
 
 bool vstr(String *str);

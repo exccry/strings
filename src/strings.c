@@ -31,7 +31,7 @@ static void _reset(String *str)
   str->value = NULL;
 }
 
-void init_string_lib(void)
+void strings_init(void)
 {
   if (atexit(cleanup_strings) != 0)
   {

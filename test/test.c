@@ -4,7 +4,7 @@
 
 int main(void)
 {
-   init_string_lib();
+   strings_init();
 
     // Create a heap-allocated String
     String *my_string = string_h("Hello, World!");
