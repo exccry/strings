@@ -2,4 +2,5 @@ cd build &&
 rm -rf * &&
 cmake .. &&
 make &&
-./test
+printf "\n\n" &&
+./test 

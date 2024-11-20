@@ -10,19 +10,18 @@ static const char *level_strings[] = {
 
 void _log(LogLevel level, const char *fmt, ...)
 {
-  if (level < LOG_LVL_INFO)
-  {
-    // handle debug
-    return;
-  }
- 
   va_list args;
   va_start(args, fmt);
 
+  if (level >= LOG_LVL_ERROR)
+    fprintf(stderr, "%s", RED);
 
   fprintf(stderr, "[%s] ", level_strings[level]);
   vfprintf(stderr, fmt, args);
-  fprintf(stderr, "\n");
+  fprintf(stderr, "%s\n", CL_CLEAR);
+
+  fprintf(stderr, "\033[?12l\033[?25h");
+  fflush(stderr);
 
   va_end(args);
 }

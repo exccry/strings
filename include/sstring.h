@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ctype.h>
+
 #include "log.h"
 #include "smemman.h"
 
@@ -12,3 +14,7 @@ typedef struct
   const size_t length;
   const size_t size;
 } SString;
+
+void sstring(const char *str);
+
+const int sstrlen(const char *str);

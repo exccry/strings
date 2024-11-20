@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define RED "\033[31m"
+#define CL_CLEAR "\033[0m"
+
 typedef enum
 {
   LOG_LVL_DEBUG,

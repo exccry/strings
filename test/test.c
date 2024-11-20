@@ -1,6 +1,7 @@
 #include "regman.h"
 #include "strings.h"
 #include "log.h"
+#include "sstring.h"
 
 int main(void)
 {
@@ -23,9 +24,15 @@ int main(void)
     string_destroy(&str);
     string_destroy_h(&my_string);
 
-    while(1)
-      string_check_for_signal();
+    const char *name = "my name is steve jobs\n";
+    
+    char buf[5];
+    strncpy(buf, "some naaame", 10);
+    printf("length: %d\t %d \n", strlen(buf), buf[5] == '\0');
+    sstring(name);
+    sstring(buf);
 
+    string_check_for_signal();
     // Now my_string is NULL, and it has been removed from the registry
     return EXIT_SUCCESS;
 }

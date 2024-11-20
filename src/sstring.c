@@ -1,44 +1,39 @@
 #include "sstring.h"
 
-#define MAX_CHECK_LIMIT 65000
+#define MAX_CHECK_LIMIT 1024
 
-static const bool has_null_terminator(const char *str)
+const int sstrlen(const char *str)
 {
   for (int i = 0; i < MAX_CHECK_LIMIT; ++i)
+  {
+    if (!isascii(str[i]) && str[i] != '\0')
+    {
+      _log(LOG_LVL_FATAL, "String failed length check, string might be malicious!");
+      return 0;
+    }
+
     if (str[i] == '\0')
-      return true;
-  
-  _log(LOG_LVL_WARNING, "Check limit for string exceeded - no '\\0' found");
-  return false;
+      return i;
+  }
+
+  _log(LOG_LVL_FATAL, "String exceeded length check, no '\\0' found");
+  return 0;
 }
 
 void sstring(const char *str)
 {
-  if (!str || !strlen(str))
+  if (!str)
   {
-    _log(LOG_LVL_FATAL, "Source string has no length or is undefined");
+    _log(LOG_LVL_FATAL, "String is undefined");
     exit(EXIT_FAILURE);
   }
 
-  if (!has_null_terminator(str))
-    exit(EXIT_FAILURE);
-}
-
-/*
-SString *sstring(const char *str)
-{
-  if (!str || !strlen(str))
+  const int len = sstrlen(str);
+  if (!len)
   {
-    _log(LOG_LVL_FATAL, "Source string has no length or is undefined");
+     _log(LOG_LVL_FATAL, "String has no length or is undefined");
     exit(EXIT_FAILURE);
-  }
-
-  // sizeof SString is wrong because we also need to take
-  // the size/length of the string in consideration !!!
-  SString *sstr = secure_alloc(sizeof(SString));
-  //sstr.value = secure_alloc(strlen(str));
+  }  
   
-
-  return sstr;
+  printf("%d\n", len);
 }
-*/
